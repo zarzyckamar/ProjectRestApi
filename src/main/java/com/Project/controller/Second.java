@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,9 +18,10 @@ import java.util.List;
 
 public class Second {
 
+
     @RequestMapping(value = "/numbers/sort-command", method = {RequestMethod.GET, RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    SecondModel secondModel(@RequestParam List numbers, @RequestParam String order) {
+    SecondModel secondModel(@RequestParam @NotNull List numbers,@NotNull @RequestParam String order) {
 
             switch (order) {
                 case "ASC":
@@ -32,6 +35,11 @@ public class Second {
             }
 
             return new SecondModel(numbers);
+        }
+
+        public boolean isCorrectNumbers(List numbers){
+        if (numbers!= null) return true;
+        else return false;
         }
 
 
