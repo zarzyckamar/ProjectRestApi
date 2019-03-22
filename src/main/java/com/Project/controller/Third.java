@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.Map;
 
 @RestController
 @EnableAutoConfiguration
@@ -41,8 +39,8 @@ public class Third {
         try {
             FileReader reader = new FileReader("C:/Users/Admin/Downloads/Project/odp.json");
             Object obj = parser.parse(reader);
-            /*JSONArray rates = (JSONArray) obj;
-            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray rates = (JSONArray) obj;
+           /* JSONObject jsonObject = (JSONObject) obj;
 
             JSONArray rates = (JSONArray) jsonObject.get("rates");
             return rates;

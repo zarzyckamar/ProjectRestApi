@@ -21,26 +21,27 @@ public class Second {
 
     @RequestMapping(value = "/numbers/sort-command", method = {RequestMethod.GET, RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    SecondModel secondModel(@RequestParam @NotNull List numbers,@NotNull @RequestParam String order) {
+    SecondModel secondModel(@RequestParam @NotNull List numbers, @NotNull @RequestParam String order) {
 
-            switch (order) {
-                case "ASC":
-                    Collections.sort(numbers);
-                    break;
-                case "DESC":
-                    Collections.sort(numbers, Collections.reverseOrder());
-                    break;
-                default:
-                    return new SecondModel(Collections.singletonList(HttpStatus.BAD_REQUEST));
-            }
-
-            return new SecondModel(numbers);
+        switch (order) {
+            case "ASC":
+                Collections.sort(numbers);
+                break;
+            case "DESC":
+                Collections.sort(numbers, Collections.reverseOrder());
+                break;
+            default:
+                return new SecondModel(Collections.singletonList(HttpStatus.BAD_REQUEST));
         }
 
-        public boolean isCorrectNumbers(List numbers){
-        if (numbers!= null) return true;
+        return new SecondModel(numbers);
+
+    }
+
+    public boolean isCorrectNumbers(List numbers) {
+        if (numbers != null) return true;
         else return false;
-        }
+    }
 
 
 }
